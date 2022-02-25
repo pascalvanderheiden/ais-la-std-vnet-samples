@@ -1,0 +1,50 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "Get_file_content_using_path": {
+        "inputs": {
+          "host": {
+            "connection": {
+              "referenceName": "sftpwithssh_1"
+            }
+          },
+          "method": "get",
+          "path": "/datasets/default/GetFileContentByPath",
+          "queries": {
+            "inferContentType": true,
+            "path": "/C:/sftp/sftp_test.json",
+            "queryParametersSingleEncoded": true
+          }
+        },
+        "runAfter": {},
+        "type": "ApiConnection"
+      },
+      "Response": {
+        "inputs": {
+          "body": "@body('Get_file_content_using_path')",
+          "statusCode": 200
+        },
+        "kind": "http",
+        "runAfter": {
+          "Get_file_content_using_path": [
+            "Succeeded"
+          ]
+        },
+        "type": "Response"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "triggers": {
+      "manual": {
+        "inputs": {
+          "method": "GET"
+        },
+        "kind": "Http",
+        "type": "Request"
+      }
+    }
+  },
+  "kind": "Stateless"
+}

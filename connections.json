@@ -1,0 +1,51 @@
+{
+  "managedApiConnections": {
+    "azurefile": {
+      "api": {
+        "id": "/subscriptions/0eb49d19-cb9e-43b2-90e0-ec9298d36203/providers/Microsoft.Web/locations/westeurope/managedApis/azurefile"
+      },
+      "authentication": {
+        "type": "ManagedServiceIdentity"
+      },
+      "connection": {
+        "id": "/subscriptions/0eb49d19-cb9e-43b2-90e0-ec9298d36203/resourceGroups/aisase-rg/providers/Microsoft.Web/connections/azurefile"
+      },
+      "connectionRuntimeUrl": "https://3e55b55a0254b9e6.02.common.logic-westeurope.azure-apihub.net/apim/azurefile/16e7bde87b3049b5be100a7a2b427fe7"
+    },
+    "sftpwithssh_1": {
+      "api": {
+        "id": "/subscriptions/0eb49d19-cb9e-43b2-90e0-ec9298d36203/providers/Microsoft.Web/locations/westeurope/managedApis/sftpwithssh"
+      },
+      "authentication": {
+        "type": "ManagedServiceIdentity"
+      },
+      "connection": {
+        "id": "/subscriptions/0eb49d19-cb9e-43b2-90e0-ec9298d36203/resourceGroups/aisase-rg/providers/Microsoft.Web/connections/sftpwithssh-5"
+      },
+      "connectionRuntimeUrl": "https://3e55b55a0254b9e6.02.common.logic-westeurope.azure-apihub.net/apim/sftpwithssh/fab91991ffbf4f1f8d39516ae25d7c2d"
+    },
+    "filesystem_1": {
+      "api": {
+        "id": "/subscriptions/0eb49d19-cb9e-43b2-90e0-ec9298d36203/providers/Microsoft.Web/locations/westeurope/managedApis/filesystem"
+      },
+      "connection": {
+        "id": "/subscriptions/0eb49d19-cb9e-43b2-90e0-ec9298d36203/resourceGroups/aisase-rg/providers/Microsoft.Web/connections/filesystem-2"
+      },
+      "connectionRuntimeUrl": "https://3e55b55a0254b9e6.02.common.logic-westeurope.azure-apihub.net/apim/filesystem/6f01aa9a0c9f4925885061c0b0a5ee0c",
+      "authentication": {
+        "type": "ManagedServiceIdentity"
+      }
+    }
+  },
+  "serviceProviderConnections": {
+    "sql": {
+      "displayName": "sqlvm01-sql-vnet",
+      "parameterValues": {
+        "connectionString": "@appsetting('sql_connectionString')"
+      },
+      "serviceProvider": {
+        "id": "/serviceProviders/sql"
+      }
+    }
+  }
+}

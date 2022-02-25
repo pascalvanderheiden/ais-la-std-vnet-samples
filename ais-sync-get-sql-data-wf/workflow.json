@@ -1,0 +1,60 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "actions": {
+      "Execute_Query": {
+        "inputs": {
+          "parameters": {
+            "query": "SELECT * FROM Inventory"
+          },
+          "serviceProviderConfiguration": {
+            "connectionName": "sql",
+            "operationId": "executeQuery",
+            "serviceProviderId": "/serviceProviders/sql"
+          }
+        },
+        "runAfter": {},
+        "type": "ServiceProvider"
+      },
+      "Response_200": {
+        "inputs": {
+          "body": "@body('Execute_Query')",
+          "statusCode": 200
+        },
+        "kind": "http",
+        "runAfter": {
+          "Execute_Query": [
+            "Succeeded"
+          ]
+        },
+        "type": "Response"
+      },
+      "Response_400": {
+        "inputs": {
+          "body": "Error on getting data from SQL Server.",
+          "statusCode": 400
+        },
+        "kind": "http",
+        "runAfter": {
+          "Execute_Query": [
+            "TIMEDOUT",
+            "FAILED"
+          ]
+        },
+        "type": "Response"
+      }
+    },
+    "contentVersion": "1.0.0.0",
+    "outputs": {},
+    "triggers": {
+      "manual": {
+        "inputs": {
+          "method": "GET"
+        },
+        "kind": "Http",
+        "type": "Request"
+      }
+    }
+  },
+  "kind": "Stateless"
+}
